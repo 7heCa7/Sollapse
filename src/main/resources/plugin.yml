@@ -1,0 +1,35 @@
+name: SoulLives
+version: 1.1.7
+main: net.soullapse.soullives.SoulLives
+api-version: '1.21.11'
+description: Three-life soul system
+
+commands:
+  checklives:
+    description: Check your remaining lives
+    usage: /checklives
+    aliases:
+      - cl
+
+  setlives:
+    description: Set your remaining lives
+    usage: /setlives <number> <player>
+    aliases:
+      - sl
+
+  setname:
+    description: Set a player's custom name
+    usage: /setname <player> <name>
+    permission: nametags.set
+
+  resetname:
+    description: Reset a player's custom name
+    usage: /resetname <player>
+    permission: nametags.reset
+
+permissions:
+  nametags.set:
+    default: op
+
+  nametags.reset:
+    default: op
