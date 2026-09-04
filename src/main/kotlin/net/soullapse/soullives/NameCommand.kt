@@ -56,12 +56,6 @@ class NameCommand(
     init {
         plugin.server.pluginManager.registerEvents(this, plugin)
 
-        /*
-         * Only updates visual state.
-         *
-         * The display itself follows the player because it is
-         * mounted as a passenger, so there is no teleport loop.
-         */
         stateTask = plugin.server.scheduler.runTaskTimer(
             plugin,
             Runnable {
@@ -75,14 +69,10 @@ class NameCommand(
 
                     if (player.isSneaking) {
                         // While sneaking:
-                        // - cannot see through blocks
-                        // - partially transparent
                         display.isSeeThrough = false
                         display.textOpacity = 100.toByte()
                     } else {
                         // Standing:
-                        // - visible through blocks
-                        // - fully opaque
                         display.isSeeThrough = true
                         display.textOpacity = 255.toByte()
                     }
@@ -167,7 +157,6 @@ class NameCommand(
 
     /**
      * Applies the custom name to:
-     *
      * 1. Chat
      * 2. Tab
      * 3. Overhead nametag
