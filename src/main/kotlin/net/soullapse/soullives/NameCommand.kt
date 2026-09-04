@@ -272,38 +272,17 @@ class NameCommand(
         displays[player.uniqueId] = display
     }
 
-    /**
-     * Resets all three name locations back to the
-     * player's actual Minecraft username.
-     */
+    // reset chat, display and tab
     private fun resetName(player: Player) {
 
         val realName = Component.text(player.name)
-
-        /*
-         * Restore chat.
-         */
         player.displayName(realName)
-
-        /*
-         * Restore tab.
-         */
         player.playerListName(realName)
-
-        /*
-         * Restore vanilla overhead nametag.
-         */
         hiddenNameTeam.removeEntry(player.name)
-
-        /*
-         * Remove custom overhead display.
-         */
         removeDisplay(player)
     }
 
-    /**
-     * Removes the TextDisplay belonging to a player.
-     */
+    // manually removed
     private fun removeDisplay(player: Player) {
 
         val display = displays.remove(player.uniqueId)
@@ -313,14 +292,12 @@ class NameCommand(
         }
     }
 
-    /**
-     * Clean up when a player leaves.
-     */
+    // kill if leaves
     @EventHandler
     fun onPlayerQuit(event: PlayerQuitEvent) {
         val player = event.player
 
-        // Use the custom nickname if one exists.
+        // use the custom nickname if one exists.
         event.quitMessage(
             Component.text()
                 .append(player.displayName().color(NamedTextColor.YELLOW))
@@ -331,28 +308,17 @@ class NameCommand(
         removeDisplay(player)
         hiddenNameTeam.removeEntry(player.name)
     }
-    /**
-     * Called by SoulLives.onDisable().
-     */
-    fun shutdown() {
 
-        /*
-         * Stop the sneaking-state task.
-         */
+    fun shutdown() {
         stateTask.cancel()
 
-        /*
-         * Remove all custom displays and restore
-         * vanilla nametags.
-         */
+        // restore original tags
         Bukkit.getOnlinePlayers().forEach { player ->
             removeDisplay(player)
             hiddenNameTeam.removeEntry(player.name)
         }
 
-        /*
-         * Extra safety in case anything remains in the map.
-         */
+        // wipe any discrepancies
         displays.values.forEach { display ->
             if (display.isValid) {
                 display.remove()
@@ -362,9 +328,6 @@ class NameCommand(
         displays.clear()
     }
 
-    /**
-     * Tab completion for player names.
-     */
     override fun onTabComplete(
         sender: CommandSender,
         command: Command,
