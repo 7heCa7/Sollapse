@@ -228,28 +228,6 @@ class NameCommand(
         display.isSeeThrough = true
         display.textOpacity = 255.toByte()
 
-        /*
-         * =====================================================
-         * TRANSFORMATION
-         * =====================================================
-         *
-         * This is the important part.
-         *
-         * Translation:
-         *     X = 0
-         *     Y = 0.5 blocks higher
-         *     Z = 0
-         *
-         * Scale:
-         *     1.0 = normal size
-         *
-         * Rotations:
-         *     none
-         *
-         * If you already have custom rotation/scale values,
-         * put them here rather than modifying
-         * display.transformation.translation afterward.
-         */
         display.transformation = Transformation(
             Vector3f(
                 0f,
