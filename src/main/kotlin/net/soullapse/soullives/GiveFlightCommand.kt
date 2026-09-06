@@ -28,8 +28,8 @@ class GiveFlightCommand : CommandExecutor {
             return true
         }
 
-        if (player.gameMode != GameMode.SURVIVAL) {
-            sender.sendMessage("§cThat player is not in Survival.")
+        if (player.gameMode !in setOf(GameMode.SURVIVAL, GameMode.ADVENTURE)) {
+            sender.sendMessage("§cThat player is not in Survival or Adventure.")
             return true
         }
 
