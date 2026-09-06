@@ -34,9 +34,9 @@ commands:
     aliases:
       - fly
 
-  tp:
+  tpc:
     description: Teleport to another player
-    usage: /tp <player>
+    usage: /tpc <player>
     permission: soullives.tp
 
 permissions:

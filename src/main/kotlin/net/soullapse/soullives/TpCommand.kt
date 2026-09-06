@@ -21,7 +21,7 @@ class TpCommand : CommandExecutor {
         }
 
         if (args.size != 1) {
-            player.sendMessage("§cUsage: /tp <player>")
+            player.sendMessage("§cUsage: /tpc <player>")
             return true
         }
 

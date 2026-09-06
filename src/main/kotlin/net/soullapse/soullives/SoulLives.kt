@@ -38,7 +38,7 @@ class SoulLives : JavaPlugin(), Listener {
         getCommand("resetname")?.tabCompleter = nameCommand
 
         getCommand("giveflight")?.setExecutor(GiveFlightCommand())
-        getCommand("tp")?.setExecutor(TpCommand())
+        getCommand("tpc")?.setExecutor(TpCommand())
 
 
         // Lives commands
