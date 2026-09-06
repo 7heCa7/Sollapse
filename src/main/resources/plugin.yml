@@ -27,9 +27,27 @@ commands:
     usage: /resetname <player>
     permission: nametags.reset
 
+  giveflight:
+    description: toggle flight in survival
+    usage: /giveflight <player>
+    permission: soullives.giveflight
+    aliases:
+      - fly
+
+  tp:
+    description: Teleport to another player
+    usage: /tp <player>
+    permission: soullives.tp
+
 permissions:
   nametags.set:
     default: op
 
   nametags.reset:
     default: op
+
+  soullives.giveflight:
+    default: op
+
+  soullives.tp:
+    default: true
