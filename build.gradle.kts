@@ -1,9 +1,9 @@
 plugins {
-    kotlin("jvm") version "2.2.01"
+    kotlin("jvm") version "2.2.10"
 }
 
 group = "net.soullapse"
-version = "1.2.0"
+version = "1.2.1"
 
 repositories {
     maven {

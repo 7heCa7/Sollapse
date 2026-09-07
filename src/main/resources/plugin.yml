@@ -1,5 +1,5 @@
 name: SoulLives
-version: 1.2.01
+version: 1.2.1
 main: net.soullapse.soullives.SoulLives
 api-version: '1.21.11'
 description: Three-life soul system

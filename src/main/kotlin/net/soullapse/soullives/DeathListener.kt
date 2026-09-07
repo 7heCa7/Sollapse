@@ -38,6 +38,17 @@ class DeathListener(
 
                 event.isCancelled = true
 
+                player.addPotionEffect(
+                    PotionEffect(
+                        PotionEffectType.REGENERATION,
+                        120,
+                        0,
+                        false,
+                        false,
+                        false
+                    )
+                )
+
                 player.health = immortalityThreshold
 
                 return
