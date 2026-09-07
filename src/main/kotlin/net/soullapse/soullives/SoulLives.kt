@@ -13,6 +13,7 @@ class SoulLives : JavaPlugin(), Listener {
     lateinit var lifeManager: LifeManager
     lateinit var shatteredManager: ShatteredManager
     lateinit var soulStateListener: SoulStateListener
+    lateinit var immortalityManager: ImmortalityManager
 
     val totemPlayers = mutableSetOf<UUID>()
     val pendingShatter = mutableSetOf<UUID>()
@@ -30,6 +31,24 @@ class SoulLives : JavaPlugin(), Listener {
 
         // Name commands
         nameCommand = NameCommand(this)
+
+        immortalityManager = ImmortalityManager()
+
+        server.pluginManager.registerEvents(
+            ImmortalityListener(this),
+            this
+        )
+
+        getCommand("immortality")?.setExecutor(
+            ImmortalityCommand(this)
+        )
+
+        getCommand("immortality")?.setExecutor(
+            ImmortalityCommand(this)
+        )
+
+        getCommand("immortality")?.tabCompleter =
+            ImmortalityTabCompleter()
 
         getCommand("setname")?.setExecutor(nameCommand)
         getCommand("setname")?.tabCompleter = nameCommand

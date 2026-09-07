@@ -1,5 +1,5 @@
 name: SoulLives
-version: 1.1.8
+version: 1.2.0
 main: net.soullapse.soullives.SoulLives
 api-version: '1.21.11'
 description: Three-life soul system
@@ -34,6 +34,13 @@ commands:
     aliases:
       - fly
 
+  immortality:
+    description: set hp threshold 1-10 HP
+    usage: /immortality <player> <1-10>
+    permission: soullives.immortal
+    aliases:
+      - im
+
   tpc:
     description: Teleport to another player
     usage: /tpc <player>
@@ -51,3 +58,6 @@ permissions:
 
   soullives.tp:
     default: true
+
+  soullives.immortal:
+    default: op
