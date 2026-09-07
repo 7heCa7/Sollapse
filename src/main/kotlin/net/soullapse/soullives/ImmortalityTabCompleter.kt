@@ -25,7 +25,7 @@ class ImmortalityTabCompleter : TabCompleter {
                 .sorted()
 
             // /immortality <player> <hearts>
-            2 -> (1..10)
+            2 -> (0..10)
                 .map { it.toString() }
                 .filter {
                     it.startsWith(args[1])
