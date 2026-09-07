@@ -31,8 +31,18 @@ class ImmortalityCommand(
 
         val health = args[1].toDoubleOrNull()
 
-        if (health == null || health < 1.0 || health > 10.0) {
-            sender.sendMessage("§cHealth must be between 1 and 10.")
+        if (health == null || health < 0.0 || health > 10.0) {
+            sender.sendMessage("§cHealth must be between 0 and 10.")
+            return true
+        }
+
+        if (health == 0.0) {
+            plugin.immortalityManager.removeImmortality(target)
+
+            sender.sendMessage(
+                "§c${target.name} is no longer immortal."
+            )
+
             return true
         }
 

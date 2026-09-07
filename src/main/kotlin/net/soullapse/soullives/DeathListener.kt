@@ -41,7 +41,7 @@ class DeathListener(
                 player.addPotionEffect(
                     PotionEffect(
                         PotionEffectType.REGENERATION,
-                        120,
+                        100,
                         0,
                         false,
                         false,

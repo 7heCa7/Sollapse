@@ -35,8 +35,8 @@ commands:
       - fly
 
   immortality:
-    description: set hp threshold 1-10 HP
-    usage: /immortality <player> <1-10>
+    description: set hp threshold 0-10 HP
+    usage: /immortality <player> <0-10>
     permission: soullives.immortal
     aliases:
       - im
