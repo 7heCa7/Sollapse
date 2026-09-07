@@ -14,6 +14,7 @@ import org.bukkit.Particle
 import org.bukkit.Sound
 import org.bukkit.potion.PotionEffect
 import org.bukkit.potion.PotionEffectType
+import org.bukkit.Bukkit
 
 class DeathListener(
     private val plugin: SoulLives
@@ -23,6 +24,25 @@ class DeathListener(
     fun onDamage(event: EntityDamageEvent) {
 
         val player = event.entity as? Player ?: return
+
+        // IMMORTALITY OVERRIDES DEATH
+        val immortalityThreshold =
+            plugin.immortalityManager.getThreshold(player)
+
+        if (immortalityThreshold != null) {
+
+            val resultingHealth =
+                player.health - event.finalDamage
+
+            if (resultingHealth <= immortalityThreshold) {
+
+                event.isCancelled = true
+
+                player.health = immortalityThreshold
+
+                return
+            }
+        }
 
         if (plugin.totemPlayers.remove(player.uniqueId)) {
             return
@@ -105,7 +125,6 @@ class DeathListener(
             )
         }
 
-        // Soul-state message.
         when (remainingLives) {
 
             2 -> {

@@ -34,11 +34,6 @@ class SoulLives : JavaPlugin(), Listener {
 
         immortalityManager = ImmortalityManager()
 
-        server.pluginManager.registerEvents(
-            ImmortalityListener(this),
-            this
-        )
-
         getCommand("immortality")?.setExecutor(
             ImmortalityCommand(this)
         )
